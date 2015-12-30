@@ -19,7 +19,7 @@ object ApiKeyManagerMain {
     actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"), system.actorOf(Props[DumyActor] ))
     actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"), system.actorOf(Props[DumyActor] ))
     actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf3"), system.actorOf(Props[DumyActor] ))
-    Thread.sleep(1000)
+    Thread.sleep(10000)
     system.terminate()
     
   }

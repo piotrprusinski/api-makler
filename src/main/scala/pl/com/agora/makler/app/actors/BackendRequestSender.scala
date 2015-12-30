@@ -15,7 +15,7 @@ class BackendRequestSender extends Actor with ActorLogging {
     
     case msg : HandleRequest => {
       log.debug("Handling LearnApiKey message : {}", msg)
-      getNewInstanceBackendRequestReciver() ! new BackendResponse(msg)
+      getNewInstanceBackendRequestReciver() //! new BackendResponse(msg)
     }
   }
   
