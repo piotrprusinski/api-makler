@@ -15,7 +15,9 @@ context.setReceiveTimeout(scala.concurrent.duration.Duration(1,SECONDS))
   def receive  = {
     case msg : BackendResponse => {
       log.debug("Handling message : {}", msg.msg)
+      log.debug("self : {}", self)
       getResponseSender(msg) ! msg
+      context.stop(self)
     }
   }
   

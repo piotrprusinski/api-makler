@@ -17,6 +17,8 @@ object ApiKeyManagerMain {
     actor ! new LearnApiKey(new ApiKey("adfasdfsdfasdf3"))
     actor ! new LearnApiKey(new ApiKey("adfasdfsdfasdf4"))
     actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"), system.actorOf(Props[DumyActor] ))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"), system.actorOf(Props[DumyActor] ))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf3"), system.actorOf(Props[DumyActor] ))
     Thread.sleep(1000)
     system.terminate()
     
