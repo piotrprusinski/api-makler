@@ -1,10 +1,13 @@
 package pl.com.agora.makler.app.actors
 
+import pl.com.agora.makler.app.messages.BackendResponse
+
 import akka.actor.Actor
 import akka.actor.ActorLogging
 import akka.actor.ActorRef
 import akka.actor.Props
 import pl.com.agora.makler.app.messages.HandleRequest
+import pl.com.agora.makler.app.messages.BackendResponse
 
 class BackendRequestSender extends Actor with ActorLogging {
 
@@ -12,7 +15,7 @@ class BackendRequestSender extends Actor with ActorLogging {
     
     case msg : HandleRequest => {
       log.debug("Handling LearnApiKey message : {}", msg)
-      getNewInstanceBackendRequestReciver() ! msg
+      getNewInstanceBackendRequestReciver() ! new BackendResponse(msg)
     }
   }
   

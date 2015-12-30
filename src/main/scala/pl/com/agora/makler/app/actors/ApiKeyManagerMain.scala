@@ -10,13 +10,13 @@ object ApiKeyManagerMain {
     implicit val system = ActorSystem ()
     
     val actor = system.actorOf(Props[ApiKeyManager] )
-    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf"))
-    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf"))
-    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf2"))
-    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf3"))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf"), system.actorOf(Props[DumyActor]))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf"), system.actorOf(Props[DumyActor] ))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf2"), system.actorOf(Props[DumyActor] ))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf3"), system.actorOf(Props[DumyActor] ))
     actor ! new LearnApiKey(new ApiKey("adfasdfsdfasdf3"))
     actor ! new LearnApiKey(new ApiKey("adfasdfsdfasdf4"))
-    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"))
+    actor ! new HandleRequest(new ApiKey("adfasdfsdfasdf4"), system.actorOf(Props[DumyActor] ))
     Thread.sleep(1000)
     system.terminate()
     
