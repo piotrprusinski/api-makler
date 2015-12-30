@@ -11,15 +11,22 @@ import pl.com.agora.makler.app.messages.BackendResponse
 
 class BackendRequestSender extends Actor with ActorLogging {
 
+
   def receive  = {
     
     case msg : HandleRequest => {
       log.debug("Handling LearnApiKey message : {}", msg)
       getNewInstanceBackendRequestReciver() //! new BackendResponse(msg)
+      context.stop(self)
     }
   }
   
    def getNewInstanceBackendRequestReciver ():ActorRef = {
     context.actorOf(Props[BackendRequestReceiver])
   }
+
+  override def postStop = {
+      log.debug("post selfkill")
+    }   
+   
 }
