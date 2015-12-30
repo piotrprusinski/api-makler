@@ -19,6 +19,7 @@ libraryDependencies ++= {
     "io.spray"          %% "spray-can"       % sprayVersion,
     "io.spray"          %% "spray-routing"   % sprayVersion,
     "io.spray"          %% "spray-json"      % sprayVersion,
+    "io.spray"          %% "spray-caching"   % sprayVersion,
     "com.typesafe.akka" %% "akka-slf4j"      % akkaVersion,
     "ch.qos.logback"    %  "logback-classic" % "1.1.2",
     "com.typesafe.akka" %% "akka-testkit"    % akkaVersion  % "test",
@@ -31,5 +32,3 @@ libraryDependencies ++= {
 mainClass in Global := Some("pl.com.agora.makler.app.Main")
 
 jarName in assembly := "makler.jar"
-
-EclipseKeys.withSource := true
