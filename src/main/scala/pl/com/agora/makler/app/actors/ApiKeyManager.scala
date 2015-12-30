@@ -42,7 +42,7 @@ class ApiKeyManager extends Actor with ActorLogging {
   }
   
   def getKnownKeyMessageHandler ():ActorRef = {
-    context.actorOf(Props[DumyActor])
+    context.actorOf(Props[SecureResponseCache])
   }
   
 }
