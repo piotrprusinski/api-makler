@@ -9,7 +9,7 @@ import akka.actor.ActorSystem
 import akka.actor.ActorRef
 import akka.actor.Props
 
-class ApiKeyManager extends Actor with ActorLogging {
+class ApiKeyManager (secureResponseCache : ActorRef) extends Actor with ActorLogging {
   
   val knownApiKeys : Set[ApiKey] = Set()
   
@@ -42,7 +42,7 @@ class ApiKeyManager extends Actor with ActorLogging {
   }
   
   def getKnownKeyMessageHandler ():ActorRef = {
-    context.actorOf(Props[SecureResponseCache])
+    secureResponseCache
   }
   
 }
