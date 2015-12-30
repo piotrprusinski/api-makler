@@ -31,12 +31,11 @@ class ResponseSender(ctx: RequestContext) extends Actor with ActorLogging {
       self ! PoisonPill
     }
     case msgTimeout: SetTimeout => {
-      log.debug("setTimeout from space")
+      log.debug(s"setTimeout from space ${msgTimeout.duration}")
       context.setReceiveTimeout(msgTimeout.duration)
-      ctx.complete("{error:1, msg:timeout}")
     }
     case a : ErrorProcesingRequest => {
-      ctx.complete("{error:1, msg:'${a.msg}'}")
+      ctx.complete(s"{error:1, msg:${a.msg}}")
       self ! PoisonPill
     }
     case _ => 

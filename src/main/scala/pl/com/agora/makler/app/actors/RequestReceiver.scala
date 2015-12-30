@@ -23,7 +23,7 @@ object RequestReceiver extends Directives {
     val urlMatcher = system.actorOf(Props[UrlMatcher])
     (ctx : RequestContext) => {
      val responseSender =  prepareResponseSender(system, ctx)
-     urlMatcher ! new MatchRequest(ctx.request.uri.path.toString(), responseSender)}
+     urlMatcher ! new MatchRequest(ctx.request.uri.path.toString(), responseSender, ctx.request)}
   }
   
   def prepareResponseSender(actorRefFactory: ActorRefFactory, ctx: RequestContext): ActorRef = {
