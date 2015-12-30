@@ -9,43 +9,36 @@ import akka.actor.ActorSystem
 import akka.actor.ActorRef
 import akka.actor.Props
 
-class ApiKeyManager extends Actor {
+class ApiKeyManager extends Actor with ActorLogging {
   
   val knownApiKeys : Set[ApiKey] = Set()
   
-  def receive = { 
+  def receive: PartialFunction[Any, Unit] = { 
     case msg : HandleRequest => {
-      //log.error("case 1")
-      println ("case 1")
+      log.debug("Handling HandleRequest message : {}", msg)
       if (known(msg.apiKey)){
-        println ("znam: "+msg.apiKey)
-        
-        getKnownKeyMessageHandler() ! msg
-        //context.actorOf(props)
-        
+        log debug ("I know this apiKey : {}", msg.apiKey)        
+        getKnownKeyMessageHandler() ! msg        
       }else{
-        println ("nie znam: "+msg.apiKey)
+      	log.debug("I don't know this apiKey : {}", msg.apiKey)
         getUnknownKeyMessageHandler() ! msg
       }
     }
     
     case msg : LearnApiKey => {
-      println ("case 2")
-      knownApiKeys+=msg.apiKey
-      println("zapamietuje: "+msg.apiKey)
+      log.debug("Handling LearnApiKey message : {}", msg)    	
+      remember(msg.apiKey)
     }
   }
   
-  
+  def remember(apiKey: ApiKey) : Unit = knownApiKeys += apiKey;
   
   def known(apiKey:ApiKey):Boolean = {
-    println("czy znam?: "+apiKey)
     knownApiKeys(apiKey)
   }
   
   def getUnknownKeyMessageHandler ():ActorRef = {
     context.actorOf(Props[DumyActor])
-    
   }
   
   def getKnownKeyMessageHandler ():ActorRef = {
