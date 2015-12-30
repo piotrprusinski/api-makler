@@ -13,7 +13,7 @@ class ApiKeyManager extends Actor with ActorLogging {
   
   val knownApiKeys : Set[ApiKey] = Set()
   
-  def receive: PartialFunction[Any, Unit] = { 
+  def receive = { 
     case msg : HandleRequest => {
       log.debug("Handling HandleRequest message : {}", msg)
       if (known(msg.apiKey)){
