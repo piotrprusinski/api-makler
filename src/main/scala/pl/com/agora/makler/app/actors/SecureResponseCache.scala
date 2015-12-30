@@ -12,14 +12,14 @@ class SecureResponseCache extends Actor with ActorLogging {
     
     case msg : HandleRequest => {
       log.debug("Handling LearnApiKey message : {}", msg)
-      getNewInstanceBackendRequestServer()
+      getNewInstanceBackendRequestServer()! msg
       
     }
     
   }
   
     def getNewInstanceBackendRequestServer ():ActorRef = {
-    context.actorOf(Props[DumyActor])
+    context.actorOf(Props[BackendRequestSender])
   }
   
 }
