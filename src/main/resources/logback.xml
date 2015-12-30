@@ -11,7 +11,7 @@
     <logger name="akka" level="INFO" />
     <logger name="spray" level="INFO" />
 
-    <logger name="com.danielasfregola" level="INFO" />
+    <logger name="pl.com.agora" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
