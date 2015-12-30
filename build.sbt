@@ -9,6 +9,8 @@ scalaVersion := "2.11.7"
 resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
                   "Spray Repository"    at "http://repo.spray.io")
 
+EclipseKeys.withSource := true
+
 libraryDependencies ++= {
   val akkaVersion       = "2.4.1"
   val sprayVersion      = "1.3.2"
