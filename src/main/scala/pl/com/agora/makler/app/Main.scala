@@ -4,6 +4,7 @@ import com.typesafe.config.ConfigFactory
 import akka.actor._
 import akka.io.IO
 import akka.util.Timeout
+import pl.com.agora.makler.app.actors.RequestReceiver
 import spray.can.Http
 
 object Main extends App {
