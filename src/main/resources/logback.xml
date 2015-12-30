@@ -4,7 +4,7 @@
         <target>System.out</target>
         <encoder>
             <!--<pattern>%date{MM/dd HH:mm:ss} %-6level[%logger{0}]: %msg%n</pattern>-->
-            <pattern>%-6level[%logger{0}]: %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} %-6level[%logger{0}]: %msg%n</pattern>
         </encoder>
     </appender>
 

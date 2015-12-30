@@ -29,3 +29,5 @@ libraryDependencies ++= {
 mainClass in Global := Some("pl.com.agora.makler.app.Main")
 
 jarName in assembly := "makler.jar"
+
+EclipseKeys.withSource := true
