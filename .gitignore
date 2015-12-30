@@ -58,3 +58,7 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
+
+# idea intellij
+.idea/
+.idea_modules/
