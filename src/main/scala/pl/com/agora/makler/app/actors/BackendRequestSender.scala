@@ -25,14 +25,13 @@ implicit val system: ActorSystem = ActorSystem()
     
     case msg : HandleRequest => {
       log.debug("Handling LearnApiKey message : {}", msg)
-        
+      getNewInstanceBackendRequestReciver() ! new BackendResponse(msg)
       
 
       
       //val response: Future[HttpResponse] =
         //(IO(Http) ? HttpRequest(GET, Uri("http://spray.io"))).mapTo[HttpResponse]
       
-      getNewInstanceBackendRequestReciver() //! new BackendResponse(msg)
       context.stop(self)
     }
   }

@@ -19,7 +19,7 @@ class UrlMatcher extends Actor with ActorLogging {
         if(msg.url.contains(o.pattern)){
           msg.responseSender ! new SetTimeout(new DurationInt(o.timeout).seconds)
          var akm = context.system.actorOf(Props[ApiKeyManager])
-         akm ! new HandleRequest(new ApiKey("ef27fa575d9d4d23803f4437c7a3cc75"), msg.responseSender)
+         akm ! new HandleRequest(new ApiKey("ef27fa575d9d4d23803f4437c7a3cc75"), o.pattern, msg.responseSender)
         }
       }}
     case _ =>
